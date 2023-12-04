@@ -1,0 +1,797 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width,initial-scale-1.0">
+    <link rel="stylesheet" href="style5.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'poppins', sans-serif;
+    }
+
+    body {
+        background: #050e2d;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar {
+        background: #1aeeef;
+        border-radius: 6px;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 7px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1b2141;
+        transition: 0.5s;
+        z-index: 1000;
+    }
+
+    header .sticky {
+        background: #1b2141;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-size: 2em;
+        font-weight: 700;
+    }
+
+    header .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header ul li {
+        list-style: none;
+        margin: 10px;
+    }
+
+    header ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    header ul li a:hover {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    header .action .searchBx {
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    header .action .searchBx i {
+        font-size: 1.4px;
+        margin: 5px;
+        color: #222;
+    }
+
+    header .action .searchBx input {
+        outline: none;
+        border: none;
+        font-size: 1em;
+        color: #222;
+    }
+
+    .games {
+        padding: 0px 100px;
+        width: 100%;
+        min-width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 40px auto;
+    }
+
+    .games h2 {
+        color: #fff;
+        margin: 10px 0;
+    }
+
+    .games ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .games ul li {
+        list-style: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 5px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .games ul li.active {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardBx {
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .games .cardBx .card {
+        width: 280px;
+        border-radius: 10px;
+        margin: 20px 40px;
+        background: #1b2141;
+        overflow: hidden;
+    }
+
+    .games .cardBx .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .games .cardBx .card .content {
+        padding: 10px;
+    }
+
+    .games .cardBx .card .content h4 {
+        color: #fff;
+        margin: 15px 0;
+    }
+
+    .games .cardBx .card .progress-line {
+        position: relative;
+        height: 10px;
+        width: 100%;
+        background: #35407e;
+        margin-bottom: 15px;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    .games .cardBx .card .progress-line span {
+        position: absolute;
+        height: 100%;
+        width: 80%;
+        border-radius: 10px;
+        background: #1aeeef;
+        box-shadow: 0 0 10px #1aeeef;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: animate 1s cubic-bezier(1, 0, 0, 5, 1) forwards;
+    }
+
+    @keyframes animate {
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .games .cardBx .card .info {
+        border-top: 2px soid #35407e;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .games .cardBx .card .info p {
+        font-size: 1em;
+        color: #fff;
+    }
+
+    .games .cardBx .card .info p span {
+        color: #1aeeef
+    }
+
+    .games .cardBx .card .info a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: 1px solid #1aeeef;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .games .cardBx .card .info a:hover {
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardBx .card.hide {
+        display: none;
+    }
+
+    
+      .pagination a.active {
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+      }
+      
+      .pagination{
+        text-align: center;
+      }
+      
+      .pagination a:hover:not(.active) { 
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+    .no-data-message {
+        font-weight: bold;
+        font-size: 30px;
+        color: #ff0000; /* Change this color to your preference */
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <a href="#" class="logo">GameOn</a>
+        <ul class="nav">
+            <ul class="nav">
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/index.html">Home</a></li>
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/ab.html">About</a></li>
+                <li><a href="F:\complete web development course\my project\page 2.html">Games</a></li>
+                <li><a href="F:\complete web development course\my project\tournament.html">Tournament</a></li>
+                <li><a href="F:/complete%20web%20development%20course/my%20project/contact1.html">Contact</a></li>
+                <li><a href="signnnn.html">SignUp</a></li>
+            </ul>
+            <div class="action">
+                <div class="searchBx">
+                    <input type="text" id="search-input" placeholder="Search Games">
+                </div>
+            </div>
+            <ul class="nav">
+                <li><a href="F:\complete web development course\my project\profile.html">Profile</a></li>
+            </ul>
+            <div class="toggleMenu"></div>
+    </header>
+    <div class="games">
+        <br>
+        <br>>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="pc">Pc games</li>
+            <li class="list" data-filter="mobile">Mobile games</li>
+        </ul>
+        <div class="cardBx">
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png">
+                <div class="content">
+                    <h2>Grand Theft Auto 5 &nbsp;&nbsp; GTA 5</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.rockstargames.com/gta-v">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg">
+                <div class="content">
+                    <h2>CyberPunk</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.cyberpunk.net/in/en/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Resident_Evil_3.jpg/220px-Resident_Evil_3.jpg">
+                <div class="content">
+                    <h2>Resident Evil 3</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.residentevil.com/3/us/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png">
+                <div class="content">
+                    <h2>Minecraft</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.minecraft.net/en-us/store/minecraft-deluxe-collection-pc">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/3dc99197430171.5ec4f32669f2f.jpg">
+                <div class="content">
+                    <h2>Assassin's Creed Valhalla</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.ubisoft.com/en-gb/game/assassins-creed/valhalla">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Destiny_2_%28artwork%29.jpg">
+                <div class="content">
+                    <h2>Destiny 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://www.bungie.net/7/en/destiny/newlight#:~:text=Destiny%202%3A%20Play%20for%20Free,Bungie.net">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/ce06a5bddd0f47a7d7df869a73ff2b46.jpg">
+                <div class="content">
+                    <h2>Red Dead Redemption 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.rockstargames.com/reddeadredemption2/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://picfiles.alphacoders.com/474/thumb-474820.jpg">
+                <div class="content">
+                    <h2>Hitman 3</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://ioi.dk/hitman#gamemenu">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img
+                    src="https://www.dsogaming.com/wp-content/uploads/2022/10/Call-of-Duty-Modern-Warfare-2-new-feature-2.jpg">
+                <div class="content">
+                    <h2>Call of Duty:Modern Warfare 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.callofduty.com/modernwarfare2">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://i.ytimg.com/vi/FNHg7POSsIs/maxresdefault.jpg">
+                <div class="content">
+                    <h2>Battlegrounds Mobile India &nbsp;&nbsp; BGMI</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/search?q=bgmi&c=apps&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://i.ytimg.com/vi/IGEc06Eypkg/maxresdefault.jpg">
+                <div class="content">
+                    <h2>FreeFire Max</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/search?q=freefire%20max&c=apps&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://assets1.ignimgs.com/2018/07/31/asphalt-9---button-1533070839297.jpg">
+                <div class="content">
+                    <h2>Asphalt 9: Legends</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM&pcampaignid=merch_published_cluster_promotion_battlestar_featured_games&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2020/12/33/5fced0194eb6b.png">
+                <div class="content">
+                    <h2>Need for Speed™ No Limits</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.ea.game.nfs14_row&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://cdn.wallpapersafari.com/22/5/TuZDoE.jpg">
+                <div class="content">
+                    <h2>Hill Climb Racing 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.fingersoft.hcr2&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://assets1.ignimgs.com/2018/09/17/shadow-fight-2---button-fin-1537214406370.jpg">
+                <div class="content">
+                    <h2>Shadow Fight 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.nekki.shadowfight&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://assets1.ignimgs.com/2015/07/20/angry-birds-2-button-000jpg-82f136.jpg">
+                <div class="content">
+                    <h2>Angry Birds 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.rovio.baba&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://toybook.com/wp-content/uploads/sites/4/2019/12/SubwaySurfers-jpg.webp">
+                <div class="content">
+                    <h2>Subway Surfers</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.kiloo.subwaysurf&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://ilogos.biz/wp-content/uploads/2021/12/3-4-980x449.png">
+                <div class="content">
+                    <h2>Shadow Fight 3</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.nekki.shadowfight3&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://www.pokeharbor.com/wp-content/uploads/2021/04/pokemon-go-art-3.jpg">
+                <div class="content">
+                    <h2>Pokemon Go</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/search?q=pokemon%20go&c=apps&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://www.androidauthority.com/wp-content/uploads/2017/08/Monument-Valley-2.jpg">
+                <div class="content">
+                    <h2>Monument Valley 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.ustwo.monumentvalley2&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://i.gadgets360cdn.com/large/super_mario_run_ios_1481776127146.jpg">
+                <div class="content">
+                    <h2>Super Mario Run</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.nintendo.zara&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://wallpapers.com/images/featured/clash-royale-67pap6bmkrprchab.jpg">
+                <div class="content">
+                    <h2>Clash Royale</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.supercell.clashroyale&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img
+                    src="https://wanuxi-storage.sgp1.cdn.digitaloceanspaces.com/2020/05/Lord-mobile-feature-image-12.jpg">
+                <div class="content">
+                    <h2>Lords Mobile: Kingdom Wars</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.igg.android.lordsmobile&pcampaignid=merch_published_cluster_promotion_battlestar_featured_games&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://assets1.ignimgs.com/2020/10/02/1238-512-1601678694055.jpg">
+                <div class="content">
+                    <h2>State of Survival: Zombie War</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.kingsgroup.sos&pcampaignid=merch_published_cluster_promotion_battlestar_top_picks&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://games.lol/wp-content/uploads/2020/07/township-pc-full-version.jpg">
+                <div class="content">
+                    <h2>Township</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.playrix.township&pcampaignid=merch_published_cluster_promotion_battlestar_top_picks&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/ce/Vice-city-cover.jpg">
+                <div class="content">
+                    <h2>Grand Theft Auto: Vice City &nbsp;&nbsp; GTA</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.rockstargames.gtavc&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/GTASABOX.jpg">
+                <div class="content">
+                    <h2>Grand Theft Auto: San Andreas &nbsp;&nbsp; GTA</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.rockstargames.gtasa&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://assets-prd.ignimgs.com/2021/12/07/dota-2-1638917128883.jpg">
+                <div class="content">
+                    <h2>Dota 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.dota2.com/home">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://assets-prd.ignimgs.com/2021/12/08/portal2-1638924084230.jpg">
+                <div class="content">
+                    <h2>Portal 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.thinkwithportals.com/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://wallpapercave.com/wp/wp4207888.jpg">
+                <div class="content">
+                    <h2>Control</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.remedygames.com/games/control/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg">
+                <div class="content">
+                    <h2>Residence Evil 4</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.residentevil.com/re4/en-asia/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://assets-prd.ignimgs.com/2022/05/07/planetoflana-1651885549468.jpg">
+                <div class="content">
+                    <h2>Planent of Lana</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://planetoflana.com/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://blacksportsonline.com/wp-content/uploads/2023/04/The-Last-Worker.jpg">
+                <div class="content">
+                    <h2>The Last Worker</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.thelastworker.com/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://assets-prd.ignimgs.com/2021/08/19/elder-scrolls-skyrim-button-2017-1629409446732.jpg">
+                <div class="content">
+                    <h2>The Elder Scrolls V: Skyrim</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://elderscrolls.bethesda.net/en/skyrim">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202211/1407/XFU0aPBvtm3W2od1ZvhByAOv.png">
+                <div class="content">
+                    <h2>Street Fighter 6</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.streetfighter.com/6">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://www.flickeringmyth.com/wp-content/uploads/2023/04/God-of-Rock-005.jpg">
+                <div class="content">
+                    <h2>God of Rock</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/1851030/God_of_Rock/">Install</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="game page 1.html">1</a>
+        <a href="game page 2.html">2</a>
+        <a href="game page 3.html">3</a>
+        <a href="game page 4.html">4</a>
+        <a href="game page 5.html">5</a>
+        <a href="#">&raquo;</a>
+    </div>
+    <br>
+    <br> <br>
+    <br>
+    <script>
+
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+
+
+
+        let list = document.querySelectorAll('.list');
+        let card = document.querySelectorAll('.card');
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function () {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let datafilter = this.getAttribute('data-filter')
+
+                for (let k = 0; k < card.length; k++) {
+                    card[k].classList.remove('active');
+                    card[k].classList.add('hide');
+
+                    if (card[k].getAttribute('data-item') == datafilter || datafilter == 'all') {
+                        card[k].classList.remove('hide');
+                        card[k].classList.add('active');
+                    }
+                }
+            })
+        }
+
+       
+    
+        const searchInput = document.getElementById('search-input');
+        const cardBx = document.querySelector('.cardBx');
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = 'No data found';
+        noDataMessage.classList.add('no-data-message');
+    
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            let hasResults = false;
+    
+            for (let i = 0; i < card.length; i++) {
+                const gameTitle = card[i].querySelector('.content h2').textContent.toLowerCase();
+    
+                if (gameTitle.includes(searchTerm)) {
+                    card[i].classList.remove('hide');
+                    card[i].classList.add('active');
+                    hasResults = true;
+                } else {
+                    card[i].classList.remove('active');
+                    card[i].classList.add('hide');
+                }
+            }
+    
+            if (!hasResults) {
+                cardBx.appendChild(noDataMessage);
+            } else {
+                cardBx.removeChild(noDataMessage);
+            }
+        });
+  
+    </script>
+</body>
+
+</html>

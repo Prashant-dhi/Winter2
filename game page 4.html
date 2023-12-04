@@ -1,0 +1,665 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width,initial-scale-1.0">
+    <link rel="stylesheet" href="style5.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'poppins', sans-serif;
+    }
+
+    body {
+        background: #050e2d;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar {
+        background: #1aeeef;
+        border-radius: 6px;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 7px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1b2141;
+        transition: 0.5s;
+        z-index: 1000;
+    }
+
+    header .sticky {
+        background: #1b2141;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-size: 2em;
+        font-weight: 700;
+    }
+
+    header .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header ul li {
+        list-style: none;
+        margin: 10px;
+    }
+
+    header ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    header ul li a:hover {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    header .action .searchBx {
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    header .action .searchBx i {
+        font-size: 1.4px;
+        margin: 5px;
+        color: #222;
+    }
+
+    header .action .searchBx input {
+        outline: none;
+        border: none;
+        font-size: 1em;
+        color: #222;
+    }
+
+    .games {
+        padding: 0px 100px;
+        width: 100%;
+        min-width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 40px auto;
+    }
+
+    .games h2 {
+        color: #fff;
+        margin: 10px 0;
+    }
+
+    .games ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .games ul li {
+        list-style: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 5px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .games ul li.active {
+        background: #1aeeef;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardBx {
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .games .cardBx .card {
+        width: 280px;
+        border-radius: 10px;
+        margin: 20px 40px;
+        background: #1b2141;
+        overflow: hidden;
+    }
+
+    .games .cardBx .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .games .cardBx .card .content {
+        padding: 10px;
+    }
+
+    .games .cardBx .card .content h4 {
+        color: #fff;
+        margin: 15px 0;
+    }
+
+    .games .cardBx .card .progress-line {
+        position: relative;
+        height: 10px;
+        width: 100%;
+        background: #35407e;
+        margin-bottom: 15px;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    .games .cardBx .card .progress-line span {
+        position: absolute;
+        height: 100%;
+        width: 80%;
+        border-radius: 10px;
+        background: #1aeeef;
+        box-shadow: 0 0 10px #1aeeef;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: animate 1s cubic-bezier(1, 0, 0, 5, 1) forwards;
+    }
+
+    @keyframes animate {
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .games .cardBx .card .info {
+        border-top: 2px soid #35407e;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .games .cardBx .card .info p {
+        font-size: 1em;
+        color: #fff;
+    }
+
+    .games .cardBx .card .info p span {
+        color: #1aeeef
+    }
+
+    .games .cardBx .card .info a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border: 1px solid #1aeeef;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .games .cardBx .card .info a:hover {
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .games .cardBx .card.hide {
+        display: none;
+    }
+
+
+    .pagination a.active {
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .pagination {
+        text-align: center;
+    }
+
+    .pagination a:hover:not(.active) {
+        background: #1aeeef;
+        border: none;
+        color: #050e2d;
+        box-shadow: 0 0 10px #1aeeef;
+    }
+
+    .no-data-message {
+        font-weight: bold;
+        font-size: 30px;
+        color: #ff0000;
+        /* Change this color to your preference */
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <a href="#" class="logo">GameOn</a>
+        <ul class="nav">
+            <ul class="nav">
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/index.html">Home</a></li>
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/ab.html">About</a></li>
+                <li><a href="F:\complete web development course\my project\page 2.html">Games</a></li>
+                <li><a href="F:\complete web development course\my project\tournament.html">Tournament</a></li>
+                <li><a href="F:/complete%20web%20development%20course/my%20project/contact1.html">Contact</a></li>
+                <li><a href="signnnn.html">SignUp</a></li>
+            </ul>
+            <div class="action">
+                <div class="searchBx">
+                    <input type="text" id="search-input" placeholder="Search Games">
+                </div>
+            </div>
+            <ul class="nav">
+                <li><a href="F:\complete web development course\my project\profile.html">Profile</a></li>
+            </ul>
+            <div class="toggleMenu"></div>
+    </header>
+
+    <div class="games">
+        <h2>Games 4</h2>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="pc">Pc games</li>
+            <li class="list" data-filter="mobile">Mobile games</li>
+        </ul>
+        <div class="cardBx">
+            <div class="card" data-item="pc">
+                <img src="https://editors.dexerto.com/wp-content/uploads/2022/02/04/Valorant-control-game-mode.jpg">
+                <div class="content">
+                    <h2>Valorant</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://playvalorant.com/en-gb/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202111/2310/1FjFdcGWmeuOpjGpodm1XYOj.png">
+                <div class="content">
+                    <h2>Deep Rock Galactic</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/548430/Deep_Rock_Galactic/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Monster_hunter_rise_cover.jpg">
+                <div class="content">
+                    <h2>Monster Hunter: Rise</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/1446780/MONSTER_HUNTER_RISE/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img
+                    src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/09/fortnite-game-1599891460.jpg">
+                <div class="content">
+                    <h2>Fortnite</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://www.xbox.com/en-us/games/store/fortnite/bt5p2x999vh2?activetab=pivot:overviewtab">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://cdn.mos.cms.futurecdn.net/4f1d636de6dc4c541efeccb58b65f94c.jpg">
+                <div class="content">
+                    <h2>Outer Wilds</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/753640/Outer_Wilds/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="	https://images8.alphacoders.com/709/709720.jpg">
+                <div class="content">
+                    <h2>Dishonored 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/agecheck/app/403640/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://www.kevduit.com/wp-content/uploads/2021/02/Valheim-Logo-1.jpg">
+                <div class="content">
+                    <h2>Valheim</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/892970/Valheim/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://cdn-www.bluestacks.com/bs-images/com.feralinteractive.xcom2_android.jpg">
+                <div class="content">
+                    <h2>XCOM 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/268500/XCOM_2/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="	https://assets-prd.ignimgs.com/2022/01/04/death-stranding-dc-button-1641336982378.jpg">
+                <div class="content">
+                    <h2>Death Stranding</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/app/1850570/DEATH_STRANDING_DIRECTORS_CUT/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://assets-prd.ignimgs.com/2022/05/27/hayday-1653673921313.jpg">
+                <div class="content">
+                    <h2>Hay Day</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.supercell.hayday">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://i.ytimg.com/vi/GqUj1mDE9kg/hqdefault.jpg">
+                <div class="content">
+                    <h2>Score! Hero</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.firsttouchgames.story&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://gamepluto.com/thumbs/slither-io-slither-io.jpg">
+                <div class="content">
+                    <h2>Slither.io</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=air.com.hypah.io.slither">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://i.ytimg.com/vi/fuD3XnO8Mig/maxresdefault.jpg">
+                <div class="content">
+                    <h2>Tiny Archers</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.OsOs.TinyArchers&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://cdn6.aptoide.com/imgs/3/d/5/3d540086db330d5921299ecfafab34fb_fgraphic.png">
+                <div class="content">
+                    <h2>UNKILLED</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.madfingergames.unkilled&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://cdn-www.bluestacks.com/bs-images/bg-banner47.jpg">
+                <div class="content">
+                    <h2>Into the Dead</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.sidheinteractive.sif.DR&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://assets-prd.ignimgs.com/2022/11/08/sonicdash-1667940290914.jpg">
+                <div class="content">
+                    <h2>Sonic Dash - Endless Running</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.sega.sonicdash&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="	https://games.lol/wp-content/uploads/2022/01/kuboom-pc-full-version.jpg">
+                <div class="content">
+                    <h2>KUBOOM 3D</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.Nobodyshot.kuboom&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://cdn-www.bluestacks.com/bs-images/Featured_Westland-Survival.jpg">
+                <div class="content">
+                    <h2>Westland Survival</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.heliogames.westland&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://i.ytimg.com/vi/u4VlVKTjfyw/hqdefault.jpg">
+                <div class="content">
+                    <h2>Ninja tobu</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.cerebralfix.ninjatobu&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://games.lol/wp-content/uploads/2019/07/zombie-catchers-pc-full-version.jpg">
+                <div class="content">
+                    <h2>Zombie Catchers</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=fi.twomenandadog.zombiecatchers&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="mobile">
+                <img src="https://games.lol/wp-content/uploads/2022/12/pocket-champs-pc-full-version.jpg">
+                <div class="content">
+                    <h2>Pocket Champs</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricinig<br><span>$10</span></p>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.pocketchamps.game&hl=en-IN">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/48/Divinity_Original_Sin_2_cover_art.jpg">
+                <div class="content">
+                    <h2>Divinity: Original Sin 2</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a
+                            href="https://store.steampowered.com/app/435150/Divinity_Original_Sin_2__Definitive_Edition/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://img.gg.deals/1f/54/f175f6cd1d2f3699581ed03811b0b018fdf3_1232xr706_Q100.jpg">
+                <div class="content">
+                    <h2>Hunt: Showdown</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://www.huntshowdown.com/">Install</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-item="pc">
+                <img src="https://i.ytimg.com/vi/JldMvQMO_5U/maxresdefault.jpg">
+                <div class="content">
+                    <h2>Elden Ring</h2>
+                    <div class="progress-line"><span></span></div>
+                    <div class="info">
+                        <p>Pricing<br><span>$10</span></p>
+                        <a href="https://store.steampowered.com/agecheck/app/1245620/">Install</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="game page 1.html">1</a>
+        <a href="game page 2.html">2</a>
+        <a href="game page 3.html">3</a>
+        <a href="game page 4.html">4</a>
+        <a href="game page 5.html">5</a>
+        <a href="#">&raquo;</a>
+    </div>
+    <br>
+    <br> <br>
+    <br>
+    <script>
+
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+
+
+
+        let list = document.querySelectorAll('.list');
+        let card = document.querySelectorAll('.card');
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function () {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let datafilter = this.getAttribute('data-filter')
+
+                for (let k = 0; k < card.length; k++) {
+                    card[k].classList.remove('active');
+                    card[k].classList.add('hide');
+
+                    if (card[k].getAttribute('data-item') == datafilter || datafilter == 'all') {
+                        card[k].classList.remove('hide');
+                        card[k].classList.add('active');
+                    }
+                }
+            })
+        }
+
+
+
+
+        const searchInput = document.getElementById('search-input');
+        const cardBx = document.querySelector('.cardBx');
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = 'No data found';
+        noDataMessage.classList.add('no-data-message');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            let hasResults = false;
+
+            for (let i = 0; i < card.length; i++) {
+                const gameTitle = card[i].querySelector('.content h2').textContent.toLowerCase();
+
+                if (gameTitle.includes(searchTerm)) {
+                    card[i].classList.remove('hide');
+                    card[i].classList.add('active');
+                    hasResults = true;
+                } else {
+                    card[i].classList.remove('active');
+                    card[i].classList.add('hide');
+                }
+            }
+
+            if (!hasResults) {
+                cardBx.appendChild(noDataMessage);
+            } else {
+                cardBx.removeChild(noDataMessage);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

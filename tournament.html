@@ -1,0 +1,392 @@
+<!-- saved from url=(0077)file:///F:/complete%20web%20development%20course/my%20project/tournament.html -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            background: #050e2d;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar {
+            background: #1aeeef;
+            border-radius: 6px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 7px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1b2141;
+            transition: 0.5s;
+            z-index: 1000;
+        }
+
+        header .sticky {
+            background: #1b2141;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        header .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header ul li {
+            list-style: none;
+            margin: 10px;
+        }
+
+        header ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        header ul li a:hover {
+            background: #1aeeef;
+            color: #050e2d;
+            box-shadow: 0 0 10px #1aeeef;
+        }
+
+        header .action .searchBx {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        header .action .searchBx i {
+            font-size: 1.4px;
+            margin: 5px;
+            color: #222;
+        }
+
+        header .action .searchBx input {
+            outline: none;
+            border: none;
+            font-size: 1em;
+            color: #222;
+        }
+
+        .tournaments {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #050e2d;
+        }
+
+        .tournaments h2 {
+            color: #fff;
+            text-align: center;
+        }
+
+        .tournaments h4 {
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .tournaments .box {
+            margin-left: 20%;
+        }
+
+        .tournaments .boxBx {
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-left: 8%;
+        }
+
+        .tournaments .boxBx .box {
+            width: 350px;
+            border-radius: 20px;
+            margin: 20px 10px;
+            background: #1b2141;
+            overflow: hidden;
+        }
+
+        .tournaments .boxBx .box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .tournaments .boxBx .box .content {
+            padding: 10px;
+        }
+
+        .tournaments .boxBx .box .content h4 span {
+            color: #1aeeef;
+            margin-top: 25px;
+        }
+
+        .tournaments .boxBx .box .content p {
+            text-align: justify;
+            color: #dbd9d9;
+            margin-top: 10px;
+        }
+
+        .tournaments .boxBx .box .content .btn {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tournaments .boxBx .box .content .watch {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: 1px solid #1aeeef;
+            text-decoration: none;
+            font-weight: 700;
+            border: 5px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .tournaments .boxBx .box .content .watch:hover {
+            border: 1px solid #1aeeef;
+            background: none;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .tournaments .boxBx .box .content .join {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: 1px solid #1aeeef;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .tournaments .boxBx .box .content .join:hover {
+            background: #1aeeef;
+            border: none;
+            color: #050e2d;
+            box-shadow: 0 0 10px #1aeeef;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">GameOn</a>
+        <ul class="nav">
+            <ul class="nav">
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/index.html">Home</a></li>
+                <li><a href="file:///F:/complete%20web%20development%20course/my%20project/ab.html">About</a></li>
+                <li><a href="F:\complete web development course\my project\page 2.html">Games</a></li>
+                <li><a href="F:\complete web development course\my project\tournament.html">Tournament</a></li>
+                <li><a href="F:/complete%20web%20development%20course/my%20project/contact1.html">Contact</a></li>
+                <li><a href="signnnn.html">SignUp</a></li>
+            </ul>
+            <div class="action">
+                <div class="searchBx">
+                    <a href="#"></a>
+                    <input type="text" placeholder="Search Games">
+                </div>
+            </div>
+            <ul class="nav">
+                <li><a href="F:\complete web development course\my project\profile.html">Profile</a></li>
+            </ul>
+            <div class="toggleMenu"></div>
+    </header>
+
+    <div class="Tournaments"><br><br><br><br>
+        <h2>Live Tournaments</h2><br>
+        <div class="boxBx">
+            <div class="box">
+                <img src="./tournament_files/BGMI-B.jpg">
+                <div class="content">
+                    <h4><span>50</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://loco.gg/categories/battlegrounds-mobile-india" class="join">Watch</a>
+                        <a href="https://www.game.tv/find-tournaments/-battlegrounds-mobile-india-tournaments"
+                            class="join">Join Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/Free-Fire-wallpaper.png">
+                <div class="content">
+                    <h4><span>30</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.youtube.com/watch?v=OBVoKsLYb-o" class="join">Watch</a>
+                        <a href="https://www.game.tv/find-tournaments/garena-free-fire-spooky-night-tournaments"
+                            class="join">Join Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/shadowfight2-free-full-version-1.jpg">
+                <div class="content">
+                    <h4><span>40</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.youtube.com/watch?v=8Q9mRVN-YD4" class="join">Watch</a>
+                        <a href="file:///F:/complete%20web%20development%20course/my%20project/tournament.html"
+                            class="join">Join Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/1302413.jpg">
+                <div class="content">
+                    <h4><span>40</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.youtube.com/watch?v=ny1ln7k8xx8" class="join">Watch</a>
+                        <a href="https://www.game.tv/find-tournaments/clash-of-clans-tournaments" class="join">Join
+                            Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/Farlight-84-image.png">
+                <div class="content">
+                    <h4><span>20</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.rooter.gg/stream/28354564" class="join">Watch</a>
+                        <a href="https://farlight84.farlightgames.com/esports/page3.html" class="join">Join Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/3902823-codm-landingsite2-tout.jpg">
+                <div class="content">
+                    <h4><span>50</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.callofduty.com/mobile/esports" class="join">Watch</a>
+                        <a href="https://www.game.tv/find-tournaments/call-of-duty-tournaments" class="join">Join
+                            Now</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./tournament_files/10.webp">
+                <div class="content">
+                    <h4><span>40</span>Matches in progress...</h4>
+                    <p>Mobile games are basically online video games that may be connected to the internet
+                        and are
+                        specifically
+                        designed for mobile devices.</p>
+                    <div class="btn">
+                        <a href="https://www.youtube.com/@BattleStarsOfficial" class="join">Watch</a>
+                        <a href="https://www.youtube.com/@BattleStarsOfficial" class="join">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        window.addEventListener('scroll', function () {
+            c
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+
+
+
+        let list = document.querySelectorAll('.list');
+        let card = document.querySelectorAll('.card');
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function () {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let datafilter = this.getAttribute('data-filter')
+
+                for (let k = 0; k < card.length; k++) {
+                    card[k].classList.remove('active');
+                    card[k].classList.add('hide');
+
+                    if (card[k].getAttribute('data-item') == datafilter || datafilter == 'all') {
+                        card[k].classList.remove('hide');
+                        card[k].classList.add('active');
+                    }
+                }
+            })
+        }
+    </script>
+
+
+</body>
+
+</html>
